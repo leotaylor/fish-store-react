@@ -5,7 +5,9 @@ import './Order.css';
 class Order extends React.Component {
   render () {
     return (
-      <h1 className="Order">Order</h1>
+      <div className="Order">
+        <h1>Order</h1>
+      </div>
     );
   }
 }
