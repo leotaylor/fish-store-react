@@ -5,7 +5,9 @@ import './New.css';
 class New extends React.Component {
   render () {
     return (
-      <h1 className="New">New</h1>
+      <div className="New">
+        <h1>New</h1>
+      </div>
     );
   }
 }
