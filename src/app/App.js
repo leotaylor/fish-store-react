@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar/Navbar';
 // import New from '../components/New/New';
 // import Order from '../components/Order/Order';
 // import OrderSpa from '../components/OrderSpa/OrderSpa';
-// import Register from '../components/Register/Register';
+import Register from '../components/Register/Register';
 // import SingleOrder from '../components/SingleOrder/SingleOrder';
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
@@ -23,7 +23,24 @@ const PrivateRoute = ({ component: Component, authed, ...rest}) => {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: '/login', staee: {from: props.location}}}
+            to={{ pathname: '/login', state: {from: props.location}}}
+          />
+        )
+      }
+    />
+  );
+};
+
+const PublicRoute = ({ component: Component, authed, ...rest}) => {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        authed === false ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{ pathname: '/orders', state: {from: props.location}}}
           />
         )
       }
@@ -51,6 +68,11 @@ class App extends Component {
                     path="/inventory"
                     authed={this.state.authed}
                     component={Inventory}
+                  />
+                  <PublicRoute
+                    path="/register"
+                    authed={this.state.authed}
+                    component={Register}
                   />
                 </Switch>
               </div>
