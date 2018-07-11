@@ -110,7 +110,7 @@ class App extends Component {
                     component={OrderSpa}
                   />
                   <PrivateRoute
-                    path="/orders/:id"
+                    path="/order/:id"
                     authed={this.state.authed}
                     component={SingleOrder}
                   />
